@@ -11,18 +11,34 @@ router.get('/', function (req, res, next) {
 });
 
 // CREATE patient
-router.post('/', function (req, res, next) {
-  Patient.create(req.body)
-    .then(user => {
-      res.json({ patient })
+router.post("/", (req, res) => {
+  Patient.create({
+    name: req.body.name,
+    age: req.body.age,
+    patientId: req.body.patientId,
+    gender: req.body.gender
+  })
+    .then(() => {
+      return Patient.findAll();
     })
-});
+    .then(patient => {
+      res.json({ patient });
+    })
+    .catch(error => {
+      res.json({ message: error });
+    });
+}); 
 
 // DELETE patient
-router.delete('/:id', (req, res) => {
-  console.log("Delete quote ${req}")
-  res.send('Delete patient')
-})
+router.delete("/:id", (req, res) => {
+  Patient.destroy({where: {id: req.params.id } })
+  .then(deletedPatient => {
+      return Patient.findAll()
+  })
+  .then(patients => {
+      res.json({ patients: patients })
+  })
+});
 
 
 
