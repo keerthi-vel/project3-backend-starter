@@ -44,15 +44,20 @@ router.put("/:id", (req, res) => {
       where: { id: req.params.id },
       returning: true
     }
-  ).then(quote => {
-    res.json(appointment);
+  ).then(appointment => {
+    res.json({ appointment });
   });
 });
 
 // Delete appointment
 router.delete("/:id", (req, res) => {
-  console.log("Delete quote ${req}");
-  res.send(`Deleted ${req.params.id}`);
+    Appointment.destroy({where: {id: req.params.id } })
+    .then(deletedAppt => {
+        return Appointment.findAll()
+    })
+    .then(appointments => {
+        res.json({ appointments: appointments })
+    })
 });
 
 module.exports = router;
