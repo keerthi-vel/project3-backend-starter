@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const Patient = require('../models').Patient
 
-/* GET users listing. */
+/* READ Patients listing. */
 router.get('/', function (req, res, next) {
   Patient.findAll()
     .then(patients => {
@@ -10,12 +10,19 @@ router.get('/', function (req, res, next) {
     })
 });
 
+// CREATE patient
 router.post('/', function (req, res, next) {
   Patient.create(req.body)
     .then(user => {
       res.json({ patient })
     })
 });
+
+// DELETE patient
+router.delete('/:id', (req, res) => {
+  console.log("Delete quote ${req}")
+  res.send('Delete patient')
+})
 
 
 
