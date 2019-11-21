@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     patientId: DataTypes.INTEGER
   }, {});
   Patient.associate = function(models) {
-    Patient.belongsToMany(models.Appointment, {as:'patientAppts', through: 'Appointments',foreignKey: 'patientId' })
+    Patient.belongsToMany(models.Appointment, { as: 'patientAppts',through: 'Appointments', foreignKey: 'patientId' })
   };
   return Patient;
 };
