@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const Doctor = require('../models').Doctor
+const Appointment = require('../models').Appointment
+const Patient = require('../models').Patient
 
 
 // CREATE 
@@ -24,7 +26,9 @@ router.post("/", (req, res) => {
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  Doctor.findAll()
+  Doctor.findAll({
+      include: [{ model:Patient }]
+  })
     .then(doctors => {
       res.json({ doctors })
     })
