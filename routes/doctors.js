@@ -16,8 +16,8 @@ router.post("/", (req, res) => {
       .then(() => {
         return Doctor.findAll();
       })
-      .then(doctor => {
-        res.json({ doctor });
+      .then(doctors => {
+        res.json({ doctors });
       })
       .catch(error => {
         res.json({ message: error });
