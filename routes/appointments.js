@@ -26,7 +26,7 @@ router.post("/", (req, res) => {
 /* READ appointments listing. */
 router.get("/", (req, res) => {
     Appointment.findAll().then(appointment => {
-      res.json({ appointment });
+      res.json({ appointment});
     });
   });
 
