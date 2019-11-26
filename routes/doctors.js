@@ -6,6 +6,7 @@ const Patient = require('../models').Patient
 
 // CREATE 
 router.post("/", (req, res) => {
+  console.log('DOCTORS', req.body);
     Doctor.create({
       name: req.body.newDoctor.name,
       address: req.body.newDoctor.address,
