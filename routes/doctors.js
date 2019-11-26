@@ -20,10 +20,10 @@ router.post("/", (req, res) => {
         res.json({ doctors });
       })
       .catch(error => {
-        res.json({ message: error });
+        res.json({ message: error }); 
       });
   }); 
-
+//notes
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   Doctor.findAll({
