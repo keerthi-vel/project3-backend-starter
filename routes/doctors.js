@@ -4,7 +4,6 @@ const Doctor = require('../models').Doctor
 const Appointment = require('../models').Appointment
 const Patient = require('../models').Patient
 
-
 // CREATE 
 router.post("/", (req, res) => {
     Doctor.create({
