@@ -4,10 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.STRING,
     time: DataTypes.STRING,
     doctorId: DataTypes.INTEGER,
-    patientId: DataTypes.INTEGER
+    patientId: DataTypes.INTEGER,
+    id: {type: DataTypes.INTEGER, primaryKey: true}
   }, {});
   Appointment.associate = function(models) {
-    // associations can be defined here
+    Appointment.belongsTo(models.Doctor, {foreignKey: 'doctorId'});
+    Appointment.belongsTo(models.Patient, {foreignKey: 'patientId'})
   };
   return Appointment;
 };

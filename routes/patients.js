@@ -1,10 +1,15 @@
 var express = require('express');
 var router = express.Router();
-const Patient = require('../models').Patient
+ const Patient = require('../models').Patient
+const Appointment = require('../models').Appointment
+const Doctor = require('../models').Doctor
 
 /* READ Patients listing. */
 router.get('/', function (req, res, next) {
-  Patient.findAll()
+  Patient.findAll({
+    // include: [{ model:Appointment}] for only appts 
+    include: [{ model:Doctor }]
+})
     .then(patients => {
       res.json({ patients })
     })
@@ -12,17 +17,17 @@ router.get('/', function (req, res, next) {
 
 // CREATE patient
 router.post("/", (req, res) => {
-  Patient.create({
-    name: req.body.name,
-    age: req.body.age,
-    patientId: req.body.patientId,
-    gender: req.body.gender
-  })
+  let newPatient = {
+    name: req.body.newPatient.name,
+    age: req.body.newPatient.age,
+    gender: req.body.newPatient.gender
+  }
+  Patient.create(newPatient)
     .then(() => {
       return Patient.findAll();
     })
-    .then(patient => {
-      res.json({ patient });
+    .then(patients => {
+      res.json({ patients });
     })
     .catch(error => {
       res.json({ message: error });
@@ -39,7 +44,5 @@ router.delete("/:id", (req, res) => {
       res.json({ patients: patients })
   })
 });
-
-
 
 module.exports = router;

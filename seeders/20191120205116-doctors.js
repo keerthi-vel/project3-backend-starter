@@ -8,7 +8,6 @@ module.exports = {
         name: 'John Smith',
         address: '100 Wmain st',
         phone: 502,
-        doctorId: 20,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -16,7 +15,6 @@ module.exports = {
         name: 'James Daniel',
         address: '100 Nmain st',
         phone: 502,
-        doctorId: 21,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -24,7 +22,7 @@ module.exports = {
         name: 'Keerthi Velaga',
         address: '100 Emain st',
         phone: 502,
-        doctorId: 22,
+        
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -32,7 +30,6 @@ module.exports = {
         name: 'Jane Smith',
         address: '100 main st',
         phone: 502,
-        doctorId: 23,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -40,7 +37,6 @@ module.exports = {
         name: 'Logan Crawford',
         address: '100 Smain st',
         phone: 502,
-        doctorId: 24,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -48,7 +44,6 @@ module.exports = {
         name: 'Jessica Amber',
         address: '100 SWmain st',
         phone: 502,
-        doctorId: 25,
         createdAt: new Date(),
         updatedAt: new Date()
       }
