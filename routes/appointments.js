@@ -14,7 +14,8 @@ router.post("/", (req, res) => {
     doctorId: req.body.doctorId,
     patientId: req.body.patientId
   })
-    .then(() => {
+    .then((newAppt) => {
+      console.log(newAppt)
       return Appointment.findAll();
     })
     .then(appointments => {

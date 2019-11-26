@@ -45,6 +45,28 @@ router.delete("/:id", (req, res) => {
   })
 });
 
+router.put("/:id", (req, res) => {
+  console.log(req.body)
+  console.log(req.params.id)
+  let age = parseInt(req.body.age)
+  Patient.update(
+    {
+      name: req.body.name,
+      age: age,
+      gender: req.body.gender
+    },
+    {
+      where: { id: req.params.id },
+      returning: true
+    }
+  ).then(() => {
+    return Patient.findAll()    
+  })
+  .then(patients => {
+    res.json({ patients });
+  });
+});
+
 
 
 module.exports = router;

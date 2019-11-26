@@ -7,11 +7,12 @@ const Patient = require('../models').Patient
 
 // CREATE 
 router.post("/", (req, res) => {
+  console.log('DOCTORS', req.body);
     Doctor.create({
-      name: req.body.name,
-      address: req.body.address,
-      doctorId: req.body.doctorId,
-      phone: req.body.phone
+      name: req.body.newDoctor.name,
+      address: req.body.newDoctor.address,
+      doctorId: req.body.newDoctor.doctorId,
+      phone: req.body.newDoctor.phone
     })
       .then(() => {
         return Doctor.findAll();
