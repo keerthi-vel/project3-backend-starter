@@ -16,14 +16,14 @@ router.post("/", (req, res) => {
       .then(() => {
         return Doctor.findAll();
       })
-      .then(doctor => {
-        res.json({ doctor });
+      .then(doctors => {
+        res.json({ doctors });
       })
       .catch(error => {
-        res.json({ message: error });
+        res.json({ message: error }); 
       });
   }); 
-
+//notes
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   Doctor.findAll({

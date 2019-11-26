@@ -7,7 +7,7 @@ const Patient = require("../models").Patient;
 
 //CREATE an appoinment then show all appointments
 router.post("/", (req, res) => {
-  console.log(req.body)
+    console.log(req.body)
   Appointment.create({
     date: req.body.date,
     time: req.body.time,
