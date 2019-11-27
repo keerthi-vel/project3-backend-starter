@@ -29,7 +29,8 @@ router.post("/", (req, res) => {
 /* READ appointments listing. */
 router.get("/", (req, res) => {
     Appointment.findAll(
-        {include: Patient}
+        {include: [{model:Patient}],
+        attributes: ['time', 'date','patientId', 'doctorId', 'id']}
     ).then(appointments => {
       res.json({ appointments });
     });
