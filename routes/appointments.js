@@ -27,7 +27,8 @@ router.post("/", (req, res) => {
 /* READ appointments listing. */
 router.get("/", (req, res) => {
     Appointment.findAll(
-        {include: Patient}
+        {include: [{model:Patient}],
+        attributes: ['time', 'date','patientId', 'doctorId', 'id']}
     ).then(appointments => {
       res.json({ appointments });
     });
@@ -62,5 +63,15 @@ router.delete("/:id", (req, res) => {
         res.json({ appointments: appointments })
     })
 });
+
+// router.delete("/:id", (req, res) => {
+//   Patient.destroy({where: {id: req.params.id } })
+//   .then(deletedPatient => {
+//       return Patient.findAll()
+//   })
+//   .then(patients => {
+//       res.json({ patients: patients })
+//   })
+// });
 
 module.exports = router;
