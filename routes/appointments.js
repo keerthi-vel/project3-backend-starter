@@ -65,4 +65,14 @@ router.delete("/:id", (req, res) => {
     })
 });
 
+// router.delete("/:id", (req, res) => {
+//   Patient.destroy({where: {id: req.params.id } })
+//   .then(deletedPatient => {
+//       return Patient.findAll()
+//   })
+//   .then(patients => {
+//       res.json({ patients: patients })
+//   })
+// });
+
 module.exports = router;
