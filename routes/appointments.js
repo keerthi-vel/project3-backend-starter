@@ -28,7 +28,7 @@ router.post("/", (req, res) => {
 router.get("/", (req, res) => {
     Appointment.findAll(
         {include: [{model:Patient}],
-        attributes: ['time', 'date','patientId', 'doctorId', 'id']}
+        attributes: ['id','time','date','patientId','doctorId']}
     ).then(appointments => {
       res.json({ appointments });
     });
@@ -55,9 +55,12 @@ router.put("/:id", (req, res) => {
 
 // Delete appointment
 router.delete("/:id", (req, res) => {
+  console.log("clicked")
     Appointment.destroy({where: {id: req.params.id } })
     .then(deletedAppt => {
-        return Appointment.findAll()
+        return Appointment.findAll({
+          attributes: ['id','time','date','patientId','doctorId']
+        })
     })
     .then(appointments => {
         res.json({ appointments: appointments })

@@ -36,6 +36,7 @@ router.get('/', function (req, res, next) {
 
 // DELETE
 router.delete("/:id", (req, res) => {
+  
     Doctor.destroy({where: {id: req.params.id } })
     .then(deletedDoctor => {
         return Doctor.findAll()
