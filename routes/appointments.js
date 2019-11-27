@@ -3,8 +3,6 @@ var router = express.Router();
 const Appointment = require("../models").Appointment;
 const Patient = require("../models").Patient;
 
-
-
 //CREATE an appoinment then show all appointments
 router.post("/", (req, res) => {
     console.log(req.body)

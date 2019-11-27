@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.STRING,
     time: DataTypes.STRING,
     doctorId: DataTypes.INTEGER,
-    patientId: DataTypes.INTEGER
+    patientId: DataTypes.INTEGER,
+    id: {type: DataTypes.INTEGER, primaryKey: true}
   }, {});
   Appointment.associate = function(models) {
     Appointment.belongsTo(models.Doctor, {foreignKey: 'doctorId'});

@@ -52,7 +52,7 @@ router.put("/:id", (req, res) => {
   Patient.update(
     {
       name: req.body.name,
-      age: age,
+      age: req.body.age,
       gender: req.body.gender
     },
     {
@@ -66,7 +66,5 @@ router.put("/:id", (req, res) => {
     res.json({ patients });
   });
 });
-
-
 
 module.exports = router;
